@@ -1,6 +1,199 @@
+:root {
+    --count: 5;
+    --radius: 6rem;
+    --toggle-size: 4rem;
+    --item-size: 3.5rem;
+    --gap: 0.4rem;
+    --bg: #f4f5f7;
+    --fg: #2c2f36;
+    --muted: rgba(0, 0, 0, 0.05);
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    --duration: 200ms;
+    --offset: -0.25turn; 
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "JetBrains Mono", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    display: grid;
+    place-items: center;
+}
+
+nav.menu {
+    position: relative;
+    width: max(var(--toggle-size), var(--radius) * 2 + var(--item-size));
+    height: max(var(--toggle-size), var(--radius) * 2 + var(--item-size));
+    display: grid;
+    place-content: center;
+}
+
+nav label {
+    width: var(--toggle-size);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all var(--duration) ease;
+    position: relative;
+    z-index: 2;
+    user-select: none;
+}
+
+nav label:active {
+    transform: scale(0.94);
+}
+
+.burger {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: var(--gap);
+}
+
+.burger span {
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+    background: black;
+    transition: all var(--duration) ease;
+}
+
+ul.menu-list {
+    list-style: none;
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    transform: rotate(-90deg);
+    transition: all calc(var(--duration) * 1.5) ease;
+}
+
+ul.menu-list li {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--item-size);
+    height: var(--item-size);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%)
+        rotate(calc((var(--i) * 1turn / var(--count)) + var(--offset))) translate(0)
+        rotate(calc(-1 * var(--i) * 1turn / var(--count)));
+    transform-origin: center center;
+    opacity: 0;
+    transition: inherit;
+}
+
+ul.menu-list a {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+    will-change: transform;
+    transition: transform var(--duration) ease;
+}
+
+ul.menu-list a::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 10px;
+    background: linear-gradient(
+        to right bottom,
+        var(--muted),
+        transparent,
+        var(--muted)
+    );
+    z-index: -1 !important;
+    border-radius: 50%;
+}
+
+ul.menu-list a:focus-visible {
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.35),
+        var(--shadow);
+}
+
+ul.menu-list a:hover {
+    transform: scale(1.1);
+    filter: brightness(1.03);
+}
+
+span.icon {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+}
+
+span.icon img {
+    width: 50%;
+    height: 50%;
+}
+
+#toggle:checked ~ ul.menu-list li {
+    transform: translate(-50%, -50%)
+        rotate(calc((var(--i) * 1turn / var(--count)) + var(--offset))) translate(var(--radius))
+        rotate(calc(-1 * var(--i) * 1turn / var(--count)));
+    opacity: 1;
+}
+
+#toggle:checked ~ ul.menu-list {
+    transform: rotate(0);
+}
+
+#toggle:checked ~ ul.menu-list a {
+    transform: rotate(.25turn);
+}
+
+#toggle:checked + label .burger span:nth-child(1) {
+    transform: translateY(calc(var(--gap) + 100%)) rotate(.125turn);
+}
+#toggle:checked + label .burger span:nth-child(2) {
+    opacity: 0;
+}
+#toggle:checked + label .burger span:nth-child(3) {
+    transform: translateY(calc(-1 * var(--gap) - 100%))  rotate(-.125turn);
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Reduces motion for users who are sensitive to animation */
+@media (prefers-reduced-motion: reduce) {
+    ul.menu-list li,
+    label .burger span {
+        transition: none !important;
+    }
 }

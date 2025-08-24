@@ -10,8 +10,6 @@ No JavaScript, no frameworks — just lightweight, accessible design.
 ## ✨ Features
 - Pure **HTML & CSS** (no JS required)  
 - Fully responsive design  
-- Accessible with ARIA labels and keyboard-friendly  
-- Easy to customize with CSS variables  
 - Smooth transitions and modern UI  
 
 ---

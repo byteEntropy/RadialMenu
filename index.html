@@ -4,20 +4,31 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Radial Menu</title>
+        <meta
+            name="description"
+            content="A cusotm menu with radial design - pure htm"
+        />
         <link rel="stylesheet" href="./statics/css/style.css" />
         <!-- <meta http-equiv="refresh" content="1.5" /> -->
     </head>
     <body>
-        <nav class="menu">
+        <nav class="menu" aira-label="Main Menu">
             <input type="checkbox" id="toggle" name="cb" hidden="hidden" />
-            <label for="toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <label
+                for="toggle"
+                aria-controls="menu-list"
+                aria-label="Open/Close Menu"
+            >
+                <span class="burger" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
             </label>
+
             <ul class="menu-list">
-                <li>
-                    <a href="#">
+                <li style="--i: 0">
+                    <a href="#" aria-label="Home">
                         <span class="icon">
                             <img
                                 src="./statics/icons/home.svg"
@@ -26,8 +37,8 @@
                         </span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" title="Account">
+                <li style="--i: 1">
+                    <a href="#" aria-label="Account">
                         <span class="icon">
                             <img
                                 src="./statics/icons/profile.svg"
@@ -36,8 +47,8 @@
                         </span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" title="Like">
+                <li style="--i: 2">
+                    <a href="#" aria-label="Like">
                         <span class="icon">
                             <img
                                 src="./statics/icons/heart.svg"
@@ -46,8 +57,8 @@
                         </span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" title="Settings">
+                <li style="--i: 3">
+                    <a href="#" aria-label="Settings">
                         <span class="icon">
                             <img
                                 src="./statics/icons/home.svg"
@@ -56,8 +67,8 @@
                         </span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" title="Logout">
+                <li style="--i: 4">
+                    <a href="#" aria-label="Logout">
                         <span class="icon">
                             <img
                                 src="./statics/icons/logout.svg"

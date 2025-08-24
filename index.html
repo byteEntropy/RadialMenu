@@ -6,14 +6,19 @@
         <title>Radial Menu</title>
         <meta
             name="description"
-            content="A cusotm menu with radial design - pure htm"
+            content="A custom menu with radial design - pure html css"
         />
         <link rel="stylesheet" href="./statics/css/style.css" />
         <!-- <meta http-equiv="refresh" content="1.5" /> -->
     </head>
     <body>
-        <nav class="menu" aira-label="Main Menu">
-            <input type="checkbox" id="toggle" name="cb" hidden="hidden" />
+        <nav class="menu" aria-label="Main Menu">
+            <input
+                type="checkbox"
+                id="toggle"
+                name="cb"
+                class="visually-hidden"
+            />
             <label
                 for="toggle"
                 aria-controls="menu-list"
@@ -32,7 +37,8 @@
                         <span class="icon">
                             <img
                                 src="./statics/icons/home.svg"
-                                alt="Home Ico"
+                                alt=""
+                                aria-hidden="true"
                             />
                         </span>
                     </a>
@@ -42,7 +48,8 @@
                         <span class="icon">
                             <img
                                 src="./statics/icons/profile.svg"
-                                alt="Profile Ico"
+                                alt=""
+                                aria-hidden="true"
                             />
                         </span>
                     </a>
@@ -52,7 +59,8 @@
                         <span class="icon">
                             <img
                                 src="./statics/icons/heart.svg"
-                                alt="Heart Ico"
+                                alt=""
+                                aria-hidden="true"
                             />
                         </span>
                     </a>
@@ -61,8 +69,9 @@
                     <a href="#" aria-label="Settings">
                         <span class="icon">
                             <img
-                                src="./statics/icons/home.svg"
-                                alt="Settings Ico"
+                                src="./statics/icons/settings.svg"
+                                alt=""
+                                aria-hidden="true"
                             />
                         </span>
                     </a>
@@ -72,7 +81,8 @@
                         <span class="icon">
                             <img
                                 src="./statics/icons/logout.svg"
-                                alt="Logout Ico"
+                                alt=""
+                                aria-hidden="true"
                             />
                         </span>
                     </a>
